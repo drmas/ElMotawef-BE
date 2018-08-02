@@ -34,7 +34,6 @@ var dashboard = new ParseDashboard(
         appName: "ElMotawef"
       }
     ],
-    allowInsecureHTTP: true,
     users: [
       {
         user: process.env.APP_ID,
@@ -42,7 +41,7 @@ var dashboard = new ParseDashboard(
       }
     ]
   },
-  true
+  { allowInsecureHTTP: true }
 );
 
 var app = express();
