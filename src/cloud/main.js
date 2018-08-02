@@ -23,6 +23,8 @@ Parse.Cloud.beforeSave("Alarms", async function(req, res) {
 
   const manager = await query.first();
 
+  req.object.set("maanger", manager);
+
   if (manager) {
     let messages = manager
       .get("tokens")
