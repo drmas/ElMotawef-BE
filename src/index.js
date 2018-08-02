@@ -32,6 +32,13 @@ var dashboard = new ParseDashboard({
       masterKey: process.env.MASTER_KEY,
       appName: "ElMotawef"
     }
+  ],
+  allowInsecureHTTP: true,
+  users: [
+    {
+      user: process.env.APP_ID,
+      pass: process.env.MASTER_KEY
+    }
   ]
 });
 
