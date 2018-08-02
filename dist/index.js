@@ -1,8 +1,10 @@
-// Example express application adding the parse-server module to expose Parse
-// compatible API routes.
-import "regenerator-runtime/runtime";
+"use strict";
 
-var express = require("express");
+require("regenerator-runtime/runtime");
+
+var express = require("express"); // Example express application adding the parse-server module to expose Parse
+// compatible API routes.
+
 var ParseServer = require("parse-server").ParseServer;
 var path = require("path");
 var ParseDashboard = require("parse-dashboard");
@@ -25,14 +27,12 @@ var api = new ParseServer({
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
 var dashboard = new ParseDashboard({
-  apps: [
-    {
-      serverURL: process.env.SERVER_URL,
-      appId: process.env.APP_ID,
-      masterKey: process.env.MASTER_KEY,
-      appName: "ElMotawef"
-    }
-  ]
+  apps: [{
+    serverURL: process.env.SERVER_URL,
+    appId: process.env.APP_ID,
+    masterKey: process.env.MASTER_KEY,
+    appName: "ElMotawef"
+  }]
 });
 
 var app = express();
@@ -47,6 +47,6 @@ app.use(mountPath, api);
 
 var port = process.env.PORT || 1337;
 var httpServer = require("http").createServer(app);
-httpServer.listen(port, function() {
+httpServer.listen(port, function () {
   console.log("parse-server-example running on port " + port + ".");
 });
