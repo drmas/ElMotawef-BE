@@ -24,23 +24,26 @@ var api = new ParseServer({
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
-var dashboard = new ParseDashboard({
-  apps: [
-    {
-      serverURL: process.env.SERVER_URL,
-      appId: process.env.APP_ID,
-      masterKey: process.env.MASTER_KEY,
-      appName: "ElMotawef"
-    }
-  ],
-  allowInsecureHTTP: true,
-  users: [
-    {
-      user: process.env.APP_ID,
-      pass: process.env.MASTER_KEY
-    }
-  ]
-});
+var dashboard = new ParseDashboard(
+  {
+    apps: [
+      {
+        serverURL: process.env.SERVER_URL,
+        appId: process.env.APP_ID,
+        masterKey: process.env.MASTER_KEY,
+        appName: "ElMotawef"
+      }
+    ],
+    allowInsecureHTTP: true,
+    users: [
+      {
+        user: process.env.APP_ID,
+        pass: process.env.MASTER_KEY
+      }
+    ]
+  },
+  true
+);
 
 var app = express();
 // make the Parse Dashboard available at /dashboard
