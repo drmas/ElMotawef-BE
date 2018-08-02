@@ -6,8 +6,19 @@ Parse.Cloud.beforeSave("Alarms", async function(req, res) {
     return res.success();
   }
 
+  // find haaj
+  const haajQuery = new Parse.Query("Haaj");
+  query.equalTo("qr", reg.object.get("qr"));
+  const haaj = await haajQuery.first();
+
+  if (!haaj) {
+    res.error({
+      error: "لم يتم العثور على الحاج"
+    });
+  }
+
   const query = new Parse.Query("_User");
-  query.equalTo("objectId", req.object.get("haaj"));
+  query.equalTo("objectId", haaj.get("objectId"));
   query.include("manager");
 
   const manager = await query.first();
